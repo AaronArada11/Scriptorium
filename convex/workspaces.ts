@@ -33,7 +33,7 @@ const workspaceId = await ctx.db.insert("workspaces", {
     joinedAt: Date.now(),
     });
 
- return workspaceId
+ return workspaceId;
     },
   });
 
