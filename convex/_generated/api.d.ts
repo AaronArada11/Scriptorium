@@ -8,7 +8,10 @@
  * @module
  */
 
+import type * as members from "../members.js";
 import type * as messages from "../messages.js";
+import type * as users from "../users.js";
+import type * as workspaces from "../workspaces.js";
 
 import type {
   ApiFromModules,
@@ -17,7 +20,10 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  members: typeof members;
   messages: typeof messages;
+  users: typeof users;
+  workspaces: typeof workspaces;
 }>;
 
 /**
