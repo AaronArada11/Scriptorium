@@ -100,7 +100,7 @@ export default function DashboardPage () {
                     </p>
                     <div className='flex gap-4 justify-center flex-wrap'>
                         <Link href="/workspace/demo">
-                            <Button size="lg" className="text-lg px-8">
+                            <Button size="lg" className="text-lg px-8 text-[#EBEBEB] bg-[#52489C]">
                                 Try Demo Workspace
                                 <ArrowRight className="ml-2 size-5" />
                             </Button>
@@ -230,6 +230,48 @@ export default function DashboardPage () {
             </div>
             </div>
         </section>
+              <section className="bg-card py-20 border-y border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">
+              How Scriptorium Works
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Get started in three simple steps
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-12">
+            <div className="text-center">
+              <div className="size-16 rounded-full bg-[#CCDAD1] text-[#788585] flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                1
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Create Your Workspace</h3>
+              <p className="text-muted-foreground">
+                Set up a shared workspace and invite your team members with role-based permissions
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="size-16 rounded-full bg-[#CCDAD1] text-[#788585] flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                2
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Upload & Organize</h3>
+              <p className="text-muted-foreground">
+                Upload your PDFs, documents, and datasets. Our AI automatically indexes everything
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="size-16 rounded-full bg-[#CCDAD1] text-[#788585] flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                3
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Collaborate & Ask</h3>
+              <p className="text-muted-foreground">
+                Edit documents together and ask the AI anything about your workspace content
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
         </div>
     )
 }
