@@ -1,7 +1,7 @@
-import { Link } from 'next/link'
+import Link from 'next/link'
 import { Button } from "./ui/button";
 import { FileText, Menu } from "lucide-react";
-
+import { SignInButton, UserButton } from '@clerk/nextjs'
 
 interface NavbarProps {
   transparent?: boolean;
@@ -27,11 +27,11 @@ export function Navbar({ transparent = false }: NavbarProps) {
             <Link href="/" className="text-muted-foreground hover:text-foreground">
               Docs
             </Link>
-            <Link href="/signin">
+            <SignInButton mode="modal">
               <Button variant="outline" size="sm">
                 Sign In
               </Button>
-            </Link>
+            </SignInButton>
             <Button size="sm">Get Started</Button>
           </div>
 
