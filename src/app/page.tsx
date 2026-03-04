@@ -5,6 +5,7 @@ import { SignInButton, UserButton } from '@clerk/nextjs'
 import { useQuery } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 import DashboardPage from './dashboard/workspaces/page'
+import LandingPage from './dashboard/workspaces/page'
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
         <Content />
       </Authenticated>
       <Unauthenticated>
-        <DashboardPage />
+        <LandingPage />
       </Unauthenticated>
     </>
   )

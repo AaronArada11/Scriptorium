@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import { Navbar } from "@/components/Navbar"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useEffect } from 'react'
 import { 
   FileText, 
   Users, 
@@ -18,13 +19,13 @@ import {
   ArrowRight,
   Upload,
   MessageSquare,
-  AppWindowMac,
+  SquarePen,
   Play
 } from "lucide-react";
 
 const features = [
     {
-      icon: AppWindowMac,
+      icon: SquarePen,
       title: "Team Workspaces",
       description: "Create shared workspaces where your team can collaborate seamlessly on documents and projects."
     },
@@ -73,9 +74,19 @@ const features = [
     }
   ];
 
-export default function DashboardPage () {
+export default function LandingPage () {
     const workspaces = useQuery(api.workspaces.getWorkspaces)
     const createWorkspace = useMutation(api.workspaces.createWorkspace)
+    useEffect(() => {
+      if (window.location.hash === '#FeatureSec') {
+        const element = document.getElementById('FeatureSec')
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' })
+          }, 100)
+        }
+      }
+    }, [])
 
     return (
         <div className='min-h-screen bg-background'>
@@ -100,7 +111,7 @@ export default function DashboardPage () {
                     </p>
                     <div className='flex gap-4 justify-center flex-wrap'>
                         <Link href="/workspace/demo">
-                            <Button size="lg" className="text-lg px-8 text-[#EBEBEB] bg-[#52489C]">
+                            <Button size="lg" className="text-lg px-8 text-[#FFFFFF] bg-[#507dbc]">
                                 Try Demo Workspace
                                 <ArrowRight className="ml-2 size-5" />
                             </Button>
@@ -113,7 +124,7 @@ export default function DashboardPage () {
                     </div>
                 </div>
 
-                <div>
+                <div className='bg-card rounded-lg'>
                     <div className='mt-16 rounded-lg shadow-2xl overflow-hidden border border-border'>
                         <div className='bg-[#232C33] px-4 py-3 flex items-center gap-2'>
                             <div className='size-3 rounded-full bg-red-500'></div>
@@ -121,7 +132,7 @@ export default function DashboardPage () {
                             <div className='size-3 rounded-full bg-green-500'></div>
                         </div>
                     </div>
-                    <div className="bg-card p-8 grid md:grid-cols-2 gap-6">
+                    <div className="p-8 grid md:grid-cols-2 gap-6 rounded-lg">
                         <div className="border border-border rounded-lg p-4">
                             <div className="flex items-center gap-2 mb-4">
                                 <FileText className="size-5 text-primary" />
@@ -169,10 +180,10 @@ export default function DashboardPage () {
           <div className="grid md:grid-cols-3 gap-8">
             {demoVideos.map((video, index) => (
               <Card key={index} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
-                <div className="relative aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                <div className="relative aspect-video bg-gradient-to-br from-[#87BFFF]/20 to-primary/5 flex items-center justify-center">
                   {/* Video placeholder - replace with actual video embed */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="size-16 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div className="size-16 rounded-full bg-[#507dbc]/90 flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Play className="size-8 text-primary-foreground ml-1" fill="currentColor" />
                     </div>
                   </div>
@@ -204,7 +215,7 @@ export default function DashboardPage () {
       </section>
 
             {/*Feature Section*/}
-            <section className="py-20">
+            <section className="py-20" id='FeatureSec'>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
                 <h2 className="text-4xl font-bold mb-4">
@@ -219,8 +230,8 @@ export default function DashboardPage () {
                 {features.map((feature) => (
                 <Card key={feature.title} className="border-border hover:shadow-lg transition-shadow">
                     <CardHeader>
-                    <div className="size-12 bg-[#CCDAD1] rounded-lg flex items-center justify-center mb-4 ">
-                        <feature.icon className="size-6 text-[#788585]" />
+                    <div className="size-12 bg-[#87BFFF] rounded-lg flex items-center justify-center mb-4 ">
+                        <feature.icon className="size-6 text-[#507dbc]" />
                     </div>
                     <CardTitle>{feature.title}</CardTitle>
                     <CardDescription className='p-2.5'>{feature.description}</CardDescription>
@@ -243,7 +254,7 @@ export default function DashboardPage () {
 
           <div className="grid md:grid-cols-3 gap-12">
             <div className="text-center">
-              <div className="size-16 rounded-full bg-[#CCDAD1] text-[#788585] flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="size-16 rounded-full bg-[#507dbc] text-[#FFFFFF] flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 1
               </div>
               <h3 className="text-xl font-semibold mb-2">Create Your Workspace</h3>
@@ -252,7 +263,7 @@ export default function DashboardPage () {
               </p>
             </div>
             <div className="text-center">
-              <div className="size-16 rounded-full bg-[#CCDAD1] text-[#788585] flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="size-16 rounded-full bg-[#507dbc] text-[#FFFFFF] flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 2
               </div>
               <h3 className="text-xl font-semibold mb-2">Upload & Organize</h3>
@@ -261,7 +272,7 @@ export default function DashboardPage () {
               </p>
             </div>
             <div className="text-center">
-              <div className="size-16 rounded-full bg-[#CCDAD1] text-[#788585] flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="size-16 rounded-full bg-[#507dbc] text-[#FFFFFF] flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 3
               </div>
               <h3 className="text-xl font-semibold mb-2">Collaborate & Ask</h3>
@@ -272,6 +283,50 @@ export default function DashboardPage () {
           </div>
         </div>
       </section>
+      <footer className="bg-[#232C33] text-[#A0C1D1] py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <FileText className="size-6 text-[#507dbc]" />
+                <span className="text-white font-bold">Scriptorium</span>
+              </div>
+              <p className="text-sm">
+                Your team's collaborative knowledge workspace.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Product</h4>
+              <ul className="space-y-2 text-sm">
+                <li>Features</li>
+                <li>Pricing</li>
+                <li>Security</li>
+                <li>Roadmap</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Company</h4>
+              <ul className="space-y-2 text-sm">
+                <li>About</li>
+                <li>Blog</li>
+                <li>Careers</li>
+                <li>Contact</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Legal</h4>
+              <ul className="space-y-2 text-sm">
+                <li>Privacy</li>
+                <li>Terms</li>
+                <li>Cookie Policy</li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-[#3a4b56] mt-12 pt-8 text-center text-sm">
+            © 2026 Scriptorium. All rights reserved.
+          </div>
+        </div>
+      </footer>
         </div>
     )
 }
