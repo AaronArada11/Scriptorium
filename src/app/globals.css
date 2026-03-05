@@ -89,7 +89,7 @@
 }
 
 .dark {
-    --background: #1a1f24;
+--background: #1a1f24;
   --foreground: #f4f3EE;
   --card: #242b32;
   --card-foreground: #f4f3EE;
@@ -121,7 +121,7 @@
   --sidebar-primary-foreground: #1a1f24;
   --sidebar-accent: #2d3540;
   --sidebar-accent-foreground: #f4f3EE;
-  --sidebar-border: rgba(135, 191, 255, 0.2);
+  --sidebar-border: rgba(135, 91, 255, 0.2);
   --sidebar-ring: #87BFFF;
 }
 

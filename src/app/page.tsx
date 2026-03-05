@@ -1,7 +1,6 @@
 'use client'
 
 import { Authenticated, Unauthenticated } from 'convex/react'
-import { SignInButton, UserButton } from '@clerk/nextjs'
 import { useQuery } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 import DashboardPage from './dashboard/workspaces/page'
@@ -11,8 +10,6 @@ export default function Home() {
   return (
     <>
       <Authenticated>
-        <UserButton />
-        <Content />
         <DashboardPage />
       </Authenticated>
       <Unauthenticated>
@@ -20,8 +17,4 @@ export default function Home() {
       </Unauthenticated>
     </>
   )
-}
-
-function Content() {
-  return <div>Authenticated content</div>
 }
