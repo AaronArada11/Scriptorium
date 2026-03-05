@@ -37,6 +37,7 @@ export const getWorkspaceMembers = query({
     const enrichedMembers = await Promise.all(
       members.map(async (member) => {
         const memberUser = await ctx.db.get(member.userId);
+        if (!memberUser) return null;
         return {
           ...member,
           user: memberUser,

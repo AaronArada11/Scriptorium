@@ -41,7 +41,7 @@ export default function DashboardPage() {
   const [isCreateTeamOpen, setIsCreateTeamOpen] = useState(false);
   const [teamName, setTeamName] = useState("");
   const [teamDescription, setTeamDescription] = useState("");
-
+  const [isCreating, setIsCreating] = useState(false)
   // Mock data for teams
   const teams = [
     {
@@ -191,8 +191,8 @@ export default function DashboardPage() {
                 <Button variant="outline" onClick={() => setIsCreateTeamOpen(false)}>
                   Cancel
                 </Button>
-                <Button onClick={handleCreateTeam} disabled={!teamName.trim()}>
-                  Create Team
+                <Button onClick={handleCreateTeam} disabled={!teamName.trim() || isCreating}>
+                  {isCreating ? 'Creating...' : 'Create Team'}
                 </Button>
               </DialogFooter>
             </DialogContent>
@@ -235,7 +235,7 @@ export default function DashboardPage() {
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
                         <Avatar className={`size-12 ${team.color}`}>
-                          <AvatarFallback className="text-white font-bold">
+                          <AvatarFallback className="text-primary bg-[#edf2f9] font-bold">
                             {team.icon}
                           </AvatarFallback>
                         </Avatar>

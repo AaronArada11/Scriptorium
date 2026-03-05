@@ -118,7 +118,7 @@ export default function LandingPage () {
                     </p>
                     <div className='flex gap-4 justify-center flex-wrap'>
                         <Link href="/workspace/demo">
-                            <Button size="lg" className="text-lg px-8 text-[#FFFFFF] bg-[#507dbc]">
+                            <Button size="lg" className="text-lg px-8">
                                 Try Demo Workspace
                                 <ArrowRight className="ml-2 size-5" />
                             </Button>
@@ -142,11 +142,11 @@ export default function LandingPage () {
                     <div className="p-8 grid md:grid-cols-2 gap-6 rounded-lg">
                         <div className="border border-border rounded-lg p-4">
                             <div className="flex items-center gap-2 mb-4">
-                                <FileText className="size-5 text-[#507dbc]" />
+                                <FileText className="size-5 text-primary" />
                                 <span className="font-semibold">Documents</span>
                             </div>
                             <div className='space-y-2'>
-                                {["Research Notes.pdf","Reaserch Methods.docx","Revised.pptx"].map((file) => (
+                                {["Research Notes.pdf","Research Methods.docx","Revised.pptx"].map((file) => (
                                 <div key={file} className='flex items-center gap-2 p-2 bg-muted rounded'>
                                     <FileText className='size-4 text-muted-foreground' />
                                     <span className='text-sm'>{file}</span>
@@ -156,7 +156,7 @@ export default function LandingPage () {
                         </div>
                         <div className="border border-border rounded-lg p-4">
                             <div className="flex items-center gap-2 mb-4">
-                                <BotMessageSquare className="size-5 text-[#507dbc]" />
+                                <BotMessageSquare className="size-5 text-primary" />
                                 <span className="font-semibold">AI Assistant</span>
                             </div>
                             <div className="space-y-2">
@@ -187,10 +187,10 @@ export default function LandingPage () {
           <div className="grid md:grid-cols-3 gap-8">
             {demoVideos.map((video, index) => (
               <Card key={index} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
-                <div className="relative aspect-video bg-gradient-to-br from-[#87BFFF]/20 to-primary/5 flex items-center justify-center">
+                <div className="relative aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
                   {/* Video placeholder - replace with actual video embed */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="size-16 rounded-full bg-[#507dbc]/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div className="size-16 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Play className="size-8 text-primary-foreground ml-1" fill="currentColor" />
                     </div>
                   </div>
@@ -237,7 +237,7 @@ export default function LandingPage () {
                 {features.map((feature) => (
                 <Card key={feature.title} className="border-border hover:shadow-lg transition-shadow">
                     <CardHeader>
-                    <div className="size-12 bg-[#87BFFF] rounded-lg flex items-center justify-center mb-4 ">
+                    <div className="size-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 ">
                         <feature.icon className="size-6 text-[#507dbc]" />
                     </div>
                     <CardTitle>{feature.title}</CardTitle>
