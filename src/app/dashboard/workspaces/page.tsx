@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from 'react'
 import { useQuery, useMutation } from 'convex/react'
 import { api } from '../../../../convex/_generated/api'
@@ -42,60 +44,23 @@ export default function DashboardPage() {
   const [teamName, setTeamName] = useState("");
   const [teamDescription, setTeamDescription] = useState("");
   const [isCreating, setIsCreating] = useState(false)
-  // Mock data for teams
-  const teams = [
-    {
-      id: 1,
-      name: "Marketing Team",
-      description: "Content, campaigns, and brand strategy",
-      role: "Owner",
-      members: 12,
-      files: 48,
-      documents: 23,
-      lastActivity: "2 hours ago",
-      color: "bg-blue-500",
-      icon: "MT"
-    },
-    {
-      id: 2,
-      name: "Product Development",
-      description: "Engineering and product design",
-      role: "Editor",
-      members: 8,
-      files: 156,
-      documents: 67,
-      lastActivity: "5 hours ago",
-      color: "bg-purple-500",
-      icon: "PD"
-    },
-    {
-      id: 3,
-      name: "Sales Team",
-      description: "Sales materials and customer outreach",
-      role: "Editor",
-      members: 15,
-      files: 92,
-      documents: 41,
-      lastActivity: "1 day ago",
-      color: "bg-green-500",
-      icon: "ST"
-    },
-    {
-      id: 4,
-      name: "Executive",
-      description: "Leadership and strategic planning",
-      role: "Viewer",
-      members: 5,
-      files: 28,
-      documents: 19,
-      lastActivity: "3 days ago",
-      color: "bg-amber-500",
-      icon: "EX"
-    }
-  ];
+  const workspaces = useQuery(api.workspaces.getWorkspaces)
+  const workspaceMembers = useQuery(api.members.getUserMemberships)
 
-  // Recent activity across all teams
-  const recentActivity = [
+  const teams = workspaces?.filter(ws => ws != null).map((ws, index) => ({
+    id: ws._id,
+    name: ws.name,
+    description: ws.description || "",
+    role: workspaceMembers?.find(m => m.workspaceId === ws._id)?.role || "Viewer",
+    members: 0, // TODO: query member count
+    files: 0,   // TODO: query file count  
+    documents: 0,
+    lastActivity: "Just now",
+    color: ["bg-blue-500", "bg-purple-500", "bg-green-500", "bg-amber-500"][index % 4],
+    icon: ws.name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase()
+
+  })) || []
+    const recentActivity = [
     { id: 1, team: "Marketing Team", action: "uploaded new brand guidelines", user: "Sarah Chen", time: "2 hours ago", icon: FileText },
     { id: 2, team: "Product Development", action: "created product roadmap", user: "Mike Johnson", time: "5 hours ago", icon: FileText },
     { id: 3, team: "Sales Team", action: "invited 3 new members", user: "Emily Davis", time: "1 day ago", icon: UserPlus },
